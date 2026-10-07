@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financial Clarity Tool — Private Beta | RN Business Management</title>
+<meta name="description" content="Know your real number. A free cashflow tool for 1–20 unit real estate investors. Private beta from RN Business Management.">
+<meta property="og:title" content="Financial Clarity Tool — Private Beta">
+<meta property="og:description" content="Rent minus bills isn't profit. See what your portfolio actually nets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1628; --navy2:#0F1F35; --gold:#C9A84C; --goldd:#A88B34;
+  --paper:#F5F5F0; --ink:#0A1628; --muted:#5A6675; --mute2:#8A94A2; --edge:#DADDE1;
+  --head:'Montserrat',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:15px}
+.w{max-width:1000px;margin:0 auto;padding:0 24px}
+
+/* hero */
+.hero{background:var(--navy);color:var(--paper);padding:60px 0 56px;border-bottom:3px solid var(--gold)}
+.tag{display:inline-block;background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:800;font-size:10px;letter-spacing:2px;padding:6px 12px;margin-bottom:22px}
+.brand{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:2.6px;color:var(--gold);margin-bottom:12px}
+h1{font-family:var(--head);font-weight:800;font-size:46px;line-height:1.08;margin:0 0 18px;letter-spacing:-1.2px}
+.lede{font-size:18px;color:#A8B2BF;max-width:620px;margin:0}
+.cta{display:inline-block;margin-top:32px;background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:800;font-size:13px;letter-spacing:1.4px;padding:16px 34px;text-decoration:none}
+.cta:hover{background:#DBBC63}
+.ctasub{color:#6F7B8A;font-size:12.5px;margin-top:12px}
+
+/* equation */
+.eq{background:var(--navy2);margin-top:44px;padding:28px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:center;border-left:3px solid var(--gold)}
+.eq .c{text-align:center}
+.eq .v{font-family:var(--head);font-weight:800;font-size:34px;line-height:1}
+.eq .l{font-family:var(--head);font-weight:600;font-size:8.5px;letter-spacing:1.3px;color:#7A8694;margin-top:8px}
+.eq .op{font-family:var(--head);font-weight:800;font-size:22px;color:#49566A}
+.n1{color:#E6EAF0}.n2{color:#E08A72}.n3{color:var(--gold)}
+
+/* sections */
+section{padding:58px 0}
+h2{font-family:var(--head);font-weight:800;font-size:28px;margin:0 0 10px;letter-spacing:-.5px}
+.kick{font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:2.2px;color:var(--goldd);margin-bottom:10px}
+.sub{color:var(--muted);max-width:640px;margin:0 0 30px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--edge);padding:22px}
+.card .t{font-family:var(--head);font-weight:700;font-size:13px;margin-bottom:8px;letter-spacing:.3px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .num{font-family:var(--head);font-weight:800;font-size:22px;color:var(--gold);margin-bottom:6px}
+
+ul.chk{list-style:none;padding:0;margin:0}
+ul.chk li{padding:11px 0 11px 28px;border-bottom:1px solid var(--edge);position:relative;color:var(--muted);font-size:14.5px}
+ul.chk li:before{content:"";position:absolute;left:0;top:17px;width:9px;height:9px;background:var(--gold)}
+ul.chk li b{color:var(--ink);font-weight:600}
+
+.band{background:var(--navy);color:var(--paper);padding:44px 0}
+.band h2{color:var(--paper)}
+.band .sub{color:#8E99A7}
+
+.steps{counter-reset:s}
+.step{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--edge)}
+.step .n{font-family:var(--head);font-weight:800;font-size:20px;color:var(--gold);min-width:34px}
+.step .t{font-family:var(--head);font-weight:700;font-size:14px;margin-bottom:3px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+
+.note{background:#fff;border-left:3px solid var(--gold);padding:20px 24px;margin-top:26px}
+.note b{font-family:var(--head)}
+
+footer{background:var(--navy);color:#6F7B8A;padding:34px 0;text-align:center;font-size:12px;letter-spacing:.4px}
+footer a{color:var(--gold);text-decoration:none}
+
+@media(max-width:860px){
+  h1{font-size:33px}
+  .grid3,.grid2{grid-template-columns:1fr}
+  .eq{grid-template-columns:1fr;gap:14px}
+  .eq .op{display:none}
+  .hero{padding:44px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="w">
+    <div class="brand">RN BUSINESS MANAGEMENT</div>
+    <div class="tag">PRIVATE BETA</div>
+    <h1>Know your number.</h1>
+    <p class="lede">Rent minus the mortgage isn't profit. The Financial Clarity Tool shows what your portfolio
+    actually nets after the costs that are certain to arrive &mdash; just not on a schedule.</p>
+    <a class="cta" href="tool.html">OPEN THE TOOL &rarr;</a>
+    <div class="ctasub">Free. No signup, no install. Runs in your browser.</div>
+
+    <div class="eq">
+      <div class="c"><div class="v n1">$2,054</div><div class="l">RENT MINUS BILLS</div></div>
+      <div class="op">&minus;</div>
+      <div class="c"><div class="v n2">$1,481</div><div class="l">RESERVES YOU OWE YOURSELF</div></div>
+      <div class="op">=</div>
+      <div class="c"><div class="v n3">$573</div><div class="l">TRUE NET CASHFLOW</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="w">
+    <div class="kick">WHAT IT IS</div>
+    <h2>A cashflow calculator that doesn't lie to you.</h2>
+    <p class="sub">Built for investors running 1&ndash;20 units. Enter a property, get the number a lender would
+    actually underwrite &mdash; plus the one that hits your account.</p>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="t">It counts what you forget</div>
+        <p>Vacancy, maintenance, CapEx and management are real costs. Most spreadsheets skip them. This one doesn't.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="t">It speaks lender</div>
+        <p>NOI, cap rate, cash-on-cash and DSCR &mdash; computed the way an underwriter computes them.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="t">It shows its work</div>
+        <p>Click any property for a full line-by-line breakdown. Every number is traceable. Nothing is hidden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="w">
+    <div class="kick" style="color:var(--gold)">WHAT YOU GET</div>
+    <h2>Eight metrics, instantly.</h2>
+    <p class="sub">Per property and blended across your whole portfolio. Recalculates the moment anything changes.</p>
+    <div class="grid2">
+      <div>
+        <ul class="chk" style="--x:0">
+          <li><b>True net cashflow</b> &mdash; what actually lands</li>
+          <li><b>NOI</b> &mdash; what lenders underwrite</li>
+          <li><b>Cap rate</b> &mdash; yield before financing</li>
+          <li><b>Cash-on-cash</b> &mdash; return on your capital</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="chk">
+          <li><b>DSCR</b> &mdash; badged bankable / thin / underwater</li>
+          <li><b>Expense ratio</b> &mdash; operational efficiency</li>
+          <li><b>Rent-to-price</b> &mdash; the 1% rule, computed</li>
+          <li><b>Net per unit</b> &mdash; compare any two deals</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="w">
+    <div class="kick">HOW TO USE IT</div>
+    <h2>About ninety seconds.</h2>
+    <div class="steps" style="margin-top:26px">
+      <div class="step"><div class="n">01</div><div><div class="t">Open it</div>
+        <p>Click the button. Nothing to install, no account to make.</p></div></div>
+      <div class="step"><div class="n">02</div><div><div class="t">Load the demo &mdash; or add your own</div>
+        <p>Hit <b>LOAD DEMO</b> to see it working with a sample portfolio, then clear it and enter your real deals.</p></div></div>
+      <div class="step"><div class="n">03</div><div><div class="t">Enter income and debt</div>
+        <p>Gross rent, then either your loan terms (it computes P&amp;I live) or a payment you already know.</p></div></div>
+      <div class="step"><div class="n">04</div><div><div class="t">Read your number</div>
+        <p>Click any row for the full underwriting breakdown. Export to CSV or print a clean PDF.</p></div></div>
+    </div>
+
+    <div class="note">
+      <b>Your data stays yours.</b> Everything saves in your own browser. Nothing is uploaded,
+      nothing is tracked, no account exists. Close the tab and come back &mdash; your portfolio is still there.
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="w" style="text-align:center">
+    <div class="kick" style="color:var(--gold)">BETA FEEDBACK</div>
+    <h2>Tell us what's missing.</h2>
+    <p class="sub" style="margin:0 auto 26px">You're one of a small group seeing this first. If something's
+    confusing, wrong, or you need a metric that isn't here &mdash; say so. That's the whole point of this round.</p>
+    <a class="cta" href="mailto:contact@rnbusinessmanagement.com?subject=Financial%20Clarity%20Tool%20--%20Beta%20Feedback&amp;body=What%20I%20tried%3A%0A%0AWhat%20worked%3A%0A%0AWhat%20didn't%3A%0A%0AWhat%20I%20wish%20it%20did%3A%0A%0A">SEND FEEDBACK</a>
+    <div class="ctasub" style="margin-top:14px">contact@rnbusinessmanagement.com</div>
+  </div>
+</div>
+
+<footer>
+  <div class="w">
+    RN BUSINESS MANAGEMENT &nbsp;&middot;&nbsp; ENGINEERED FOR INVESTORS<br>
+    <a href="https://rnbusinessmanagement.com">rnbusinessmanagement.com</a><br><br>
+    <span style="color:#4A5767">Financial Clarity Tool &mdash; private beta. Built by Skyler Trinidad, THE FINNESSE GROUP LLC.<br>
+    For planning purposes only. Not financial, tax, or investment advice.</span>
+  </div>
+</footer>
+
+</body>
+</html>

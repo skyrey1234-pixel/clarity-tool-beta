@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financial Clarity Tool — Know Your Number | RN Business Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1628; --navy2:#0F1F35; --gold:#C9A84C; --goldd:#A88B34;
+  --paper:#F5F5F0; --white:#fff; --ink:#0A1628;
+  --muted:#5A6675; --mute2:#8A94A2; --edge:#DADDE1;
+  --pos:#1F7A54; --neg:#B4442F;
+  --head:'Montserrat',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 80px}
+
+/* header */
+header{background:var(--navy);color:var(--paper);padding:26px 0;border-bottom:3px solid var(--gold)}
+.hd{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.brand{font-family:var(--head);font-weight:800;font-size:13px;letter-spacing:2.4px;color:var(--gold)}
+h1{font-family:var(--head);font-weight:800;font-size:30px;margin:8px 0 4px;letter-spacing:-.5px}
+.sub{color:#9AA4B2;font-size:13px}
+.beta{font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:1.6px;background:var(--gold);color:var(--navy);padding:5px 10px;display:inline-block}
+
+/* reality gap */
+.gap{background:var(--navy);color:var(--paper);margin-top:22px;padding:26px 28px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:center}
+.gap .c{text-align:center}
+.gap .v{font-family:var(--head);font-weight:800;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.gap .l{font-family:var(--head);font-weight:600;font-size:9px;letter-spacing:1.4px;color:#8A94A2;margin-top:8px}
+.gap .op{font-family:var(--head);font-weight:800;font-size:26px;color:#4A5767}
+.gap .naive{color:var(--paper)} .gap .res{color:#E08A72} .gap .true{color:var(--gold)}
+.gapnote{text-align:center;color:#7A8694;font-size:12px;padding:14px 0 0;border-top:1px solid #1B2738;margin-top:18px;grid-column:1/-1}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:14px}
+.kpi{background:var(--white);border:1px solid var(--edge);padding:14px}
+.kpi .l{font-family:var(--head);font-weight:600;font-size:9px;letter-spacing:1.1px;color:var(--mute2)}
+.kpi .v{font-family:var(--head);font-weight:800;font-size:21px;margin-top:6px;font-variant-numeric:tabular-nums}
+.badge{font-family:var(--head);font-weight:700;font-size:9px;letter-spacing:1px;padding:3px 7px;display:inline-block;margin-top:5px}
+.b-ok{background:#E3F2EA;color:var(--pos)} .b-thin{background:#FBF2DC;color:var(--goldd)} .b-bad{background:#F8E4DF;color:var(--neg)}
+
+/* layout */
+.body{display:grid;grid-template-columns:330px 1fr;gap:20px;margin-top:20px;align-items:start}
+.body>*{min-width:0}
+.card{background:var(--white);border:1px solid var(--edge);min-width:0}
+.card h2{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:1.4px;margin:0;padding:14px 18px;border-bottom:1px solid var(--edge);background:var(--paper)}
+.pad{padding:16px 18px}
+label{display:block;font-family:var(--head);font-weight:600;font-size:9.5px;letter-spacing:.8px;color:var(--muted);margin:12px 0 4px}
+input{width:100%;padding:9px 10px;border:1px solid var(--edge);border-radius:0;font-family:var(--body);font-size:13px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--gold);outline-offset:-1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:6px;border:1px solid var(--edge)}
+.seg button{padding:9px;border:0;background:#fff;font-family:var(--head);font-weight:600;font-size:10px;letter-spacing:.7px;cursor:pointer;color:var(--muted)}
+.seg button.on{background:var(--navy);color:var(--gold)}
+.btn{width:100%;padding:12px;border:0;background:var(--gold);color:var(--navy);font-family:var(--head);font-weight:800;font-size:11.5px;letter-spacing:1.3px;cursor:pointer;margin-top:16px}
+.btn:hover{background:var(--goldd)}
+.btn.ghost{background:transparent;border:1px solid var(--edge);color:var(--muted);font-weight:600;margin-top:8px}
+.btn.ghost:hover{background:var(--paper)}
+.mini{font-size:11px;color:var(--mute2);margin-top:8px;line-height:1.45}
+.pi{background:var(--paper);border:1px solid var(--edge);padding:10px 12px;margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.pi .l{font-family:var(--head);font-weight:600;font-size:9.5px;letter-spacing:.8px;color:var(--muted)}
+.pi .v{font-family:var(--head);font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
+
+/* table */
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-family:var(--head);font-weight:600;font-size:9px;letter-spacing:.9px;color:var(--mute2);text-align:right;padding:11px 10px;border-bottom:1px solid var(--edge);white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:12px 10px;border-bottom:1px solid #EDEFF1;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td:first-child{text-align:left}
+tbody tr.row{cursor:pointer}
+tbody tr.row:hover{background:#FAFAF7}
+.nm{font-family:var(--head);font-weight:700;font-size:13px}
+.un{font-size:11px;color:var(--mute2);font-family:var(--body);font-weight:400}
+tfoot td{font-family:var(--head);font-weight:800;border-top:2px solid var(--navy);border-bottom:0;background:var(--paper)}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+.x{color:var(--mute2);cursor:pointer;font-weight:700;padding:0 4px}
+.x:hover{color:var(--neg)}
+
+/* drawer */
+.dr{background:var(--navy);color:var(--paper);padding:20px 22px}
+.dg{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+.dg .b{background:var(--navy2);padding:11px 12px}
+.dg .l{font-family:var(--head);font-weight:600;font-size:8.5px;letter-spacing:1px;color:#7A8694}
+.dg .v{font-family:var(--head);font-weight:800;font-size:16px;margin-top:4px;font-variant-numeric:tabular-nums}
+.pl{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+.pl .r{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1B2738;font-size:12.5px}
+.pl .r span{color:#9AA4B2} .pl .r b{font-variant-numeric:tabular-nums;font-weight:600}
+.pl .r.tot{border-bottom:0;border-top:1px solid var(--gold);margin-top:6px;padding-top:9px}
+.pl .r.tot span{color:var(--gold);font-family:var(--head);font-weight:700;font-size:10px;letter-spacing:1px}
+.pl .r.tot b{color:var(--gold);font-family:var(--head);font-weight:800;font-size:16px}
+
+.empty{padding:56px 20px;text-align:center;color:var(--mute2)}
+footer{text-align:center;color:var(--mute2);font-size:10.5px;padding:28px 20px 0;margin-top:30px;border-top:1px solid var(--edge);letter-spacing:.4px}
+
+@media(max-width:1040px){
+  .body{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .gap{grid-template-columns:1fr;gap:14px}
+  .gap .op{display:none}
+  .dg{grid-template-columns:repeat(2,1fr)}
+  .pl{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  header{background:#fff;color:#000;border-bottom:2px solid #000}
+  .brand,h1{color:#000}
+  .side,.btn,.x{display:none!important}
+  .body{grid-template-columns:1fr}
+  .gap{background:#fff;color:#000;border:2px solid #000}
+  .gap .v,.gap .naive,.gap .res,.gap .true{color:#000}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div>
+      <div class="brand">RN BUSINESS MANAGEMENT</div>
+      <h1>Financial Clarity Tool</h1>
+      <div class="sub">Know your number. The one that's left after everything real gets paid.</div>
+    </div>
+    <div class="beta">BETA</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="gap">
+    <div class="c"><div class="v naive" id="gNaive">$0</div><div class="l">RENT MINUS BILLS</div></div>
+    <div class="op">&minus;</div>
+    <div class="c"><div class="v res" id="gRes">$0</div><div class="l">RESERVES YOU OWE YOURSELF</div></div>
+    <div class="op">=</div>
+    <div class="c"><div class="v true" id="gTrue">$0</div><div class="l">TRUE NET CASHFLOW</div></div>
+    <div class="gapnote">Same portfolio. Two very different answers.</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">UNITS</div><div class="v" id="kUnits">0</div></div>
+    <div class="kpi"><div class="l">NOI / MO</div><div class="v" id="kNoi">$0</div></div>
+    <div class="kpi"><div class="l">CAP RATE</div><div class="v" id="kCap">—</div></div>
+    <div class="kpi"><div class="l">CASH-ON-CASH</div><div class="v" id="kCoc">—</div></div>
+    <div class="kpi"><div class="l">DSCR</div><div class="v" id="kDscr">—</div><span class="badge" id="kBadge"></span></div>
+    <div class="kpi"><div class="l">EXPENSE RATIO</div><div class="v" id="kExp">—</div></div>
+  </div>
+
+  <div class="body">
+    <!-- INPUT -->
+    <div class="card side">
+      <h2 id="formTitle">ADD A PROPERTY</h2>
+      <div class="pad">
+        <label>PROPERTY NAME</label>
+        <input id="f_name" placeholder="123 Maple Ave Duplex">
+        <div class="row2">
+          <div><label>UNITS</label><input id="f_units" type="number" value="1" min="1"></div>
+          <div><label>PURCHASE PRICE</label><input id="f_price" type="number" placeholder="285000"></div>
+        </div>
+        <div class="row2">
+          <div><label>GROSS RENT / MO</label><input id="f_rent" type="number" placeholder="2600"></div>
+          <div><label>OTHER INCOME / MO</label><input id="f_other" type="number" value="0"></div>
+        </div>
+
+        <label style="margin-top:18px">DEBT</label>
+        <div class="seg">
+          <button id="segA" class="on" type="button">LOAN TERMS</button>
+          <button id="segB" type="button">I KNOW MY PAYMENT</button>
+        </div>
+
+        <div id="modeTerms">
+          <div class="row3">
+            <div><label>DOWN %</label><input id="f_down" type="number" value="25"></div>
+            <div><label>RATE %</label><input id="f_rate" type="number" step="0.01" value="6.75"></div>
+            <div><label>YEARS</label><input id="f_term" type="number" value="30"></div>
+          </div>
+          <div class="pi"><span class="l">PRINCIPAL &amp; INTEREST</span><span class="v" id="calcPI">$0</span></div>
+        </div>
+        <div id="modePay" style="display:none">
+          <label>MONTHLY PAYMENT (P&amp;I)</label>
+          <input id="f_pay" type="number" placeholder="1532">
+          <label>CASH INVESTED</label>
+          <input id="f_cash" type="number" placeholder="71250">
+        </div>
+
+        <label style="margin-top:18px">ANNUAL FIXED COSTS</label>
+        <div class="row3">
+          <div><label>TAXES</label><input id="f_tax" type="number" placeholder="3600"></div>
+          <div><label>INSURANCE</label><input id="f_ins" type="number" placeholder="2400"></div>
+          <div><label>HOA</label><input id="f_hoa" type="number" value="0"></div>
+        </div>
+
+        <label style="margin-top:18px">RESERVES (% OF INCOME)</label>
+        <div class="row2">
+          <div><label>VACANCY</label><input id="f_vac" type="number" value="5"></div>
+          <div><label>MAINTENANCE</label><input id="f_maint" type="number" value="5"></div>
+        </div>
+        <div class="row2">
+          <div><label>CAPEX</label><input id="f_capex" type="number" value="5"></div>
+          <div><label>MANAGEMENT</label><input id="f_mgmt" type="number" value="8"></div>
+        </div>
+        <div class="row2">
+          <div><label>REHAB (ONE TIME)</label><input id="f_rehab" type="number" value="0"></div>
+          <div><label>OTHER MO. EXPENSE</label><input id="f_omo" type="number" value="0"></div>
+        </div>
+
+        <button class="btn" id="saveBtn" type="button">ADD PROPERTY</button>
+        <button class="btn ghost" id="cancelBtn" type="button" style="display:none">CANCEL EDIT</button>
+        <div class="mini">Defaults are industry-standard reserves. Override anything. Nothing leaves your device &mdash; it saves in this browser only.</div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <h2>PORTFOLIO</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr>
+            <th>PROPERTY</th><th>RENT</th><th>OPEX</th><th>DEBT</th><th>NOI</th>
+            <th>NET / MO</th><th>CAP</th><th>CoC</th><th>DSCR</th><th></th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+          <tfoot id="tfoot"></tfoot>
+        </table>
+      </div>
+      <div class="pad" style="display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--edge)">
+        <button class="btn" style="width:auto;padding:10px 18px;margin:0" id="demoBtn" type="button">LOAD DEMO</button>
+        <button class="btn ghost" style="width:auto;padding:10px 18px;margin:0" id="csvBtn" type="button">EXPORT CSV</button>
+        <button class="btn ghost" style="width:auto;padding:10px 18px;margin:0" id="printBtn" type="button">PRINT / PDF</button>
+        <button class="btn ghost" style="width:auto;padding:10px 18px;margin:0" id="clearBtn" type="button">CLEAR ALL</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    RN BUSINESS MANAGEMENT &nbsp;·&nbsp; FINANCIAL CLARITY TOOL &nbsp;·&nbsp; BETA
+    <br>Built by Skyler Trinidad &mdash; THE FINNESSE GROUP LLC
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="rnbm_fct_v1", props=[], editId=null, mode="terms";
+var $=function(i){return document.getElementById(i);};
+var n=function(v){v=parseFloat(v);return isFinite(v)?v:0;};
+var money=function(v){
+  var s=(Math.abs(v)<0.005?0:v);
+  return (s<0?"-$":"$")+Math.abs(Math.round(s)).toLocaleString();
+};
+var pct=function(v){return isFinite(v)?v.toFixed(2)+"%":"—";};
+
+function pmt(P,ratePct,years){
+  if(P<=0||years<=0) return 0;
+  var r=ratePct/100/12, nn=years*12;
+  if(r===0) return P/nn;
+  var f=Math.pow(1+r,nn);
+  return P*(r*f)/(f-1);
+}
+
+// ---- THE ENGINE ----
+function calc(p){
+  var gsi=n(p.rent)+n(p.other);
+  var vac=gsi*n(p.vac)/100;
+  var egi=gsi-vac;
+  var fixed=(n(p.tax)+n(p.ins)+n(p.hoa))/12;
+  var maint=egi*n(p.maint)/100;
+  var capex=egi*n(p.capex)/100;
+  var mgmt=egi*n(p.mgmt)/100;
+  var opex=fixed+maint+capex+mgmt+n(p.omo);
+  var noi=egi-opex;
+
+  var debt, cashIn;
+  if(p.mode==="payment"){
+    debt=n(p.pay);
+    cashIn=n(p.cash)+n(p.rehab);
+  }else{
+    var loan=n(p.price)*(1-n(p.down)/100);
+    debt=pmt(loan,n(p.rate),n(p.term));
+    cashIn=n(p.price)*n(p.down)/100+n(p.rehab);
+  }
+  var net=noi-debt;
+  var naive=gsi-fixed-debt-n(p.omo);          // what people think they make
+  var reserves=vac+maint+capex+mgmt;           // what they forgot
+
+  return {
+    gsi:gsi, vac:vac, egi:egi, fixed:fixed, maint:maint, capex:capex, mgmt:mgmt,
+    omo:n(p.omo), opex:opex, noi:noi, debt:debt, net:net, cashIn:cashIn,
+    naive:naive, reserves:reserves,
+    cap: n(p.price)>0 ? noi*12/n(p.price)*100 : NaN,
+    coc: cashIn>0 ? net*12/cashIn*100 : NaN,
+    dscr: debt>0 ? noi/debt : NaN,
+    expRatio: egi>0 ? opex/egi*100 : NaN,
+    rtp: n(p.price)>0 ? (n(p.rent)/n(p.price))*100 : NaN
+  };
+}
+
+function dscrBadge(d){
+  if(!isFinite(d)) return ["",""];
+  if(d>=1.25) return ["BANKABLE","b-ok"];
+  if(d>=1.00) return ["THIN","b-thin"];
+  return ["UNDERWATER","b-bad"];
+}
+
+function render(){
+  var tb=$("tbody"), tf=$("tfoot");
+  tb.innerHTML=""; tf.innerHTML="";
+  if(!props.length){
+    tb.innerHTML='<tr><td colspan="10" class="empty">No properties yet. Add one on the left, or load the demo portfolio.</td></tr>';
+    ["gNaive","gRes","gTrue"].forEach(function(i){$(i).textContent="$0";});
+    $("kUnits").textContent="0"; $("kNoi").textContent="$0";
+    ["kCap","kCoc","kDscr","kExp"].forEach(function(i){$(i).textContent="—";});
+    $("kBadge").textContent=""; $("kBadge").className="badge";
+    return;
+  }
+  var T={units:0,gsi:0,opex:0,debt:0,noi:0,net:0,price:0,cashIn:0,naive:0,res:0,egi:0};
+  props.forEach(function(p){
+    var c=calc(p);
+    T.units+=n(p.units); T.gsi+=c.gsi; T.opex+=c.opex; T.debt+=c.debt;
+    T.noi+=c.noi; T.net+=c.net; T.price+=n(p.price); T.cashIn+=c.cashIn;
+    T.naive+=c.naive; T.res+=c.reserves; T.egi+=c.egi;
+
+    var b=dscrBadge(c.dscr);
+    var tr=document.createElement("tr");
+    tr.className="row";
+    tr.innerHTML=
+      '<td><div class="nm">'+esc(p.name)+'</div><div class="un">'+n(p.units)+' unit'+(n(p.units)===1?"":"s")+'</div></td>'+
+      '<td>'+money(c.gsi)+'</td>'+
+      '<td class="neg">'+money(-c.opex)+'</td>'+
+      '<td class="neg">'+money(-c.debt)+'</td>'+
+      '<td>'+money(c.noi)+'</td>'+
+      '<td class="'+(c.net>=0?"pos":"neg")+'"><b>'+money(c.net)+'</b></td>'+
+      '<td>'+pct(c.cap)+'</td>'+
+      '<td>'+pct(c.coc)+'</td>'+
+      '<td>'+(isFinite(c.dscr)?c.dscr.toFixed(2):"—")+'</td>'+
+      '<td><span class="x" data-del="'+p.id+'">&times;</span></td>';
+    tr.addEventListener("click",function(ev){
+      if(ev.target.getAttribute("data-del")) return;
+      toggleDrawer(tr,p,c);
+    });
+    tb.appendChild(tr);
+  });
+
+  var dscrT=T.debt>0?T.noi/T.debt:NaN;
+  var b=dscrBadge(dscrT);
+  tf.innerHTML='<tr><td>PORTFOLIO ('+props.length+')</td><td>'+money(T.gsi)+'</td>'+
+    '<td class="neg">'+money(-T.opex)+'</td><td class="neg">'+money(-T.debt)+'</td>'+
+    '<td>'+money(T.noi)+'</td><td class="'+(T.net>=0?"pos":"neg")+'">'+money(T.net)+'</td>'+
+    '<td>'+pct(T.price>0?T.noi*12/T.price*100:NaN)+'</td>'+
+    '<td>'+pct(T.cashIn>0?T.net*12/T.cashIn*100:NaN)+'</td>'+
+    '<td>'+(isFinite(dscrT)?dscrT.toFixed(2):"—")+'</td><td></td></tr>';
+
+  $("gNaive").textContent=money(T.naive);
+  $("gRes").textContent=money(T.res);
+  $("gTrue").textContent=money(T.net);
+  $("kUnits").textContent=T.units;
+  $("kNoi").textContent=money(T.noi);
+  $("kCap").textContent=pct(T.price>0?T.noi*12/T.price*100:NaN);
+  $("kCoc").textContent=pct(T.cashIn>0?T.net*12/T.cashIn*100:NaN);
+  $("kDscr").textContent=isFinite(dscrT)?dscrT.toFixed(2):"—";
+  $("kBadge").textContent=b[0]; $("kBadge").className="badge "+b[1];
+  $("kExp").textContent=pct(T.egi>0?T.opex/T.egi*100:NaN);
+}
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(m){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
+
+function toggleDrawer(tr,p,c){
+  var nx=tr.nextSibling;
+  if(nx&&nx.className==="detail"){nx.parentNode.removeChild(nx);return;}
+  var ex=document.querySelectorAll("tr.detail");
+  for(var i=0;i<ex.length;i++) ex[i].parentNode.removeChild(ex[i]);
+  var d=document.createElement("tr");
+  d.className="detail";
+  d.innerHTML='<td colspan="10" style="padding:0"><div class="dr">'+
+    '<div class="dg">'+
+      box("EXPENSE RATIO",pct(c.expRatio))+
+      box("RENT TO PRICE",pct(c.rtp))+
+      box("CASH INVESTED",money(c.cashIn))+
+      box("NET / UNIT",money(c.net/Math.max(n(p.units),1)))+
+      box("ANNUAL NET",money(c.net*12))+
+    '</div>'+
+    '<div class="pl">'+
+      '<div>'+
+        row("Gross scheduled income",money(c.gsi))+
+        row("Vacancy loss",money(-c.vac))+
+        row("Effective gross income",money(c.egi))+
+        row("Taxes",money(-n(p.tax)/12))+
+        row("Insurance",money(-n(p.ins)/12))+
+        row("HOA",money(-n(p.hoa)/12))+
+      '</div>'+
+      '<div>'+
+        row("Maintenance",money(-c.maint))+
+        row("CapEx reserve",money(-c.capex))+
+        row("Management",money(-c.mgmt))+
+        row("Other",money(-c.omo))+
+        row("Net operating income",money(c.noi))+
+        row("Debt service",money(-c.debt))+
+        '<div class="r tot"><span>TRUE NET CASHFLOW</span><b>'+money(c.net)+'</b></div>'+
+      '</div>'+
+    '</div></div></td>';
+  tr.parentNode.insertBefore(d,tr.nextSibling);
+}
+function box(l,v){return '<div class="b"><div class="l">'+l+'</div><div class="v">'+v+'</div></div>';}
+function row(l,v){return '<div class="r"><span>'+l+'</span><b>'+v+'</b></div>';}
+
+function readForm(){
+  return {
+    id: editId||("p"+Date.now()),
+    name: $("f_name").value.trim()||"Untitled Property",
+    units:n($("f_units").value)||1, price:n($("f_price").value),
+    rent:n($("f_rent").value), other:n($("f_other").value),
+    mode:mode, down:n($("f_down").value), rate:n($("f_rate").value),
+    term:n($("f_term").value), pay:n($("f_pay").value), cash:n($("f_cash").value),
+    tax:n($("f_tax").value), ins:n($("f_ins").value), hoa:n($("f_hoa").value),
+    vac:n($("f_vac").value), maint:n($("f_maint").value),
+    capex:n($("f_capex").value), mgmt:n($("f_mgmt").value),
+    rehab:n($("f_rehab").value), omo:n($("f_omo").value)
+  };
+}
+function clearForm(){
+  ["f_name","f_price","f_rent","f_tax","f_ins","f_pay","f_cash"].forEach(function(i){$(i).value="";});
+  $("f_units").value=1; $("f_other").value=0; $("f_hoa").value=0;
+  $("f_down").value=25; $("f_rate").value=6.75; $("f_term").value=30;
+  $("f_vac").value=5; $("f_maint").value=5; $("f_capex").value=5; $("f_mgmt").value=8;
+  $("f_rehab").value=0; $("f_omo").value=0;
+  editId=null; $("saveBtn").textContent="ADD PROPERTY";
+  $("formTitle").textContent="ADD A PROPERTY";
+  $("cancelBtn").style.display="none";
+  livePI();
+}
+window.saveProp=function(){
+  var p=readForm();
+  if(editId){
+    for(var i=0;i<props.length;i++) if(props[i].id===editId) props[i]=p;
+  } else props.push(p);
+  save(); clearForm(); render();
+};
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(props));}catch(e){} }
+function load(){ try{var r=localStorage.getItem(KEY); if(r) props=JSON.parse(r)||[];}catch(e){props=[];} }
+
+function livePI(){
+  var loan=n($("f_price").value)*(1-n($("f_down").value)/100);
+  $("calcPI").textContent=money(pmt(loan,n($("f_rate").value),n($("f_term").value)));
+}
+["f_price","f_down","f_rate","f_term"].forEach(function(i){
+  $(i).addEventListener("input",livePI);
+});
+
+$("segA").addEventListener("click",function(){
+  mode="terms"; $("segA").className="on"; $("segB").className="";
+  $("modeTerms").style.display=""; $("modePay").style.display="none";
+});
+$("segB").addEventListener("click",function(){
+  mode="payment"; $("segB").className="on"; $("segA").className="";
+  $("modeTerms").style.display="none"; $("modePay").style.display="";
+});
+$("saveBtn").addEventListener("click",window.saveProp);
+$("cancelBtn").addEventListener("click",clearForm);
+
+document.addEventListener("click",function(e){
+  var id=e.target.getAttribute&&e.target.getAttribute("data-del");
+  if(!id) return;
+  e.stopPropagation();
+  props=props.filter(function(p){return p.id!==id;});
+  save(); render();
+});
+
+$("demoBtn").addEventListener("click",function(){
+  props=[
+    {id:"d1",name:"123 Maple Ave Duplex",units:2,price:285000,rent:2600,other:0,mode:"terms",
+     down:25,rate:6.75,term:30,pay:0,cash:0,tax:3600,ins:2400,hoa:0,
+     vac:5,maint:5,capex:5,mgmt:8,rehab:0,omo:0},
+    {id:"d2",name:"45 Broad St Triplex",units:3,price:420000,rent:4100,other:0,mode:"terms",
+     down:25,rate:6.75,term:30,pay:0,cash:0,tax:5400,ins:3200,hoa:0,
+     vac:5,maint:5,capex:5,mgmt:8,rehab:0,omo:0}
+  ];
+  save(); render();
+});
+$("clearBtn").addEventListener("click",function(){
+  if(confirm("Clear all properties?")){props=[];save();render();}
+});
+$("printBtn").addEventListener("click",function(){window.print();});
+$("csvBtn").addEventListener("click",function(){
+  var h=["Property","Units","Price","Gross Rent","OpEx","Debt Service","NOI","True Net","Cap %","CoC %","DSCR"];
+  var rows=[h.join(",")];
+  props.forEach(function(p){
+    var c=calc(p);
+    rows.push([
+      '"'+String(p.name).replace(/"/g,'""')+'"',p.units,p.price,c.gsi.toFixed(2),
+      c.opex.toFixed(2),c.debt.toFixed(2),c.noi.toFixed(2),c.net.toFixed(2),
+      isFinite(c.cap)?c.cap.toFixed(2):"",isFinite(c.coc)?c.coc.toFixed(2):"",
+      isFinite(c.dscr)?c.dscr.toFixed(2):""
+    ].join(","));
+  });
+  var blob=new Blob([rows.join("\n")],{type:"text/csv"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="portfolio.csv"; a.click();
+});
+
+window.__calc=calc; window.__pmt=pmt; window.__props=function(){return props;};
+
+load();
+// ?demo=1 opens with the sample portfolio already loaded (for shared links)
+if(/[?&]demo=1/.test(location.search)){
+  props=[
+    {id:"d1",name:"123 Maple Ave Duplex",units:2,price:285000,rent:2600,other:0,mode:"terms",
+     down:25,rate:6.75,term:30,pay:0,cash:0,tax:3600,ins:2400,hoa:0,
+     vac:5,maint:5,capex:5,mgmt:8,rehab:0,omo:0},
+    {id:"d2",name:"45 Broad St Triplex",units:3,price:420000,rent:4100,other:0,mode:"terms",
+     down:25,rate:6.75,term:30,pay:0,cash:0,tax:5400,ins:3200,hoa:0,
+     vac:5,maint:5,capex:5,mgmt:8,rehab:0,omo:0}
+  ];
+}
+livePI(); render();
+})();
+</script>
+</body>
+</html>
