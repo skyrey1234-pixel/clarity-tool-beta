@@ -1,0 +1,126 @@
+FINANCIAL CLARITY TOOL — BETA
+=============================
+
+LIVE LINK (send this to anyone):
+https://skyrey1234-pixel.github.io/clarity-tool-beta/
+
+Opens pre-loaded with a sample portfolio:
+https://skyrey1234-pixel.github.io/clarity-tool-beta/tool.html?demo=1
+
+Works on phone and desktop. No signup, no install, nothing to download.
+
+
+-------------------------------------------------
+TEXT TO SEND RAFAEL (copy/paste)
+-------------------------------------------------
+
+Beta's packaged and live. Send this to anyone:
+
+https://skyrey1234-pixel.github.io/clarity-tool-beta/
+
+Works on phone, no signup, no install. Feedback button goes
+straight to your contact@ inbox.
+
+Takes 60 seconds to try. Hit LOAD DEMO to see it working, then
+clear it and put real numbers in.
+
+
+-------------------------------------------------
+TEXT RAFAEL SENDS TO BETA TESTERS (copy/paste)
+-------------------------------------------------
+
+Putting something in front of you before it goes public.
+
+It's a cashflow tool for 1-20 unit investors. Point is simple:
+rent minus the mortgage isn't profit. This shows what you
+actually net after vacancy, maintenance, CapEx and management —
+the costs that are certain to arrive, just not on a schedule.
+
+https://skyrey1234-pixel.github.io/clarity-tool-beta/
+
+Free, no signup, works on your phone. Hit LOAD DEMO to see it
+run, then put your own deal in.
+
+Tell me what's missing or what's wrong. That's the whole reason
+you're seeing it early.
+
+
+-------------------------------------------------
+THE SIMPLE INFO
+-------------------------------------------------
+
+WHAT IT IS
+A cashflow calculator for investors running 1-20 units.
+
+WHAT IT DOES
+Shows the gap between what people think they make and what they
+actually net. Demo portfolio: $2,054 looks like profit. Real
+number is $573. The $1,481 difference is reserves most
+spreadsheets never subtract.
+
+WHAT IT CALCULATES
+  True net cashflow    what actually lands in the account
+  NOI                  what a lender underwrites
+  Cap rate             yield before financing
+  Cash-on-cash         return on cash actually invested
+  DSCR                 badged BANKABLE / THIN / UNDERWATER
+  Expense ratio        operational efficiency
+  Rent-to-price        the 1% rule, computed
+  Net per unit         compares a duplex to a triplex
+
+FEATURES
+  - Click any property for a full line-by-line breakdown
+  - Two debt modes: loan terms (computes P&I live) or known payment
+  - Saves in the browser automatically
+  - Export CSV, print clean PDF
+  - Works offline once loaded
+
+PRIVACY
+Nothing is uploaded. No account, no tracking, no database.
+Everything saves in the user's own browser only.
+
+
+-------------------------------------------------
+VERIFIED
+-------------------------------------------------
+
+Math was re-derived independently in Python and matched against
+the live site. Not eyeballed.
+
+  Amortization    $236,250 @ 6.75% / 30yr = $1,532.31   MATCHED
+  EGI             gross - vacancy                        HOLDS
+  NOI             EGI - operating expenses               HOLDS
+  Net             NOI - debt service                     HOLDS
+  The gap         naive - reserves = true net            EXACT
+  Portfolio       $139 + $434 = $573                     FOOTS
+  Live public URL every figure correct                   CONFIRMED
+  Mobile 430px    zero horizontal overflow               CONFIRMED
+
+Demo numbers are realistic Jacksonville figures — 6.81% cap,
+37% expense ratio, 1.17 DSCR. Nothing inflated.
+
+
+-------------------------------------------------
+TO PUT IT ON HIS OWN DOMAIN LATER
+-------------------------------------------------
+
+The two files are plain HTML. They run from any host.
+
+Fastest option: drag this folder onto https://app.netlify.com/drop
+Gives a live URL in about 30 seconds.
+
+For tool.rnbusinessmanagement.com: point a CNAME at the host
+and drop the same two files in. No build step, no server,
+no dependencies.
+
+
+-------------------------------------------------
+FILES
+-------------------------------------------------
+
+  index.html   the landing page people see first
+  tool.html    the actual calculator
+
+Repo: https://github.com/skyrey1234-pixel/clarity-tool-beta
+
+Built by Skyler Trinidad — THE FINNESSE GROUP LLC
